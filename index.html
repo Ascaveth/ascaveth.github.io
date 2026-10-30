@@ -1,91 +1,162 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="ascaveth — Backend Software Engineer. Notes on APIs, data, and the decisions behind dependable software.">
-<title>Engineering fieldnotes | ascaveth</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Angriawan Yevance Mailoa, Backend Engineer in Jakarta. Java and Spring Boot services, access control, SQL optimization, and data migration.">
+  <title>Angriawan Yevance Mailoa | Backend Engineer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body id="top">
-<a class="skip-link" href="#main">Skip to content</a>
-<nav aria-label="Main navigation">
-<a href="#top">ascaveth / engineering fieldnotes</a>
-<div>
-<a href="#about">About</a>
-<a href="#projects">Work</a>
-<a href="#contact">GitHub</a>
-</div>
-</nav>
-<main id="main">
-<header>
-<aside>
-<span>ascaveth</span>
-<p class="note">Backend engineering<br>Decisions, systems,<br>and the details between.</p>
-</aside>
-<div>
-<h1>The work behind the interface.</h1>
-<p class="intro">A backend engineer’s notes on APIs, data, and dependable software.</p>
-<a class="button" href="#projects">Read selected work</a>
-</div>
-</header>
-<section class="essay" id="about">
-<div>
-<h2>I like knowing why<br>a system behaves.</h2>
-<p>Backend Software Engineer. This notebook is a place for examining APIs, access boundaries, and data integrity through the decisions behind them.</p>
-</div>
-</section>
-<section id="projects">
-<div class="essay">
-<h2>Engineering notes</h2>
-</div>
-<article class="project">
-<div>
-<span class="num">01 / Access boundaries</span>
-<h3>Who gets to see<br>which records?</h3>
-<p>Illustrative example, not a published project: bringing list results and pagination under the same authorization rule.</p>
-<details>
-<summary>Read the decision</summary>
-<p>Apply one bound company predicate to both queries. Verify denied access, empty results, and page totals together.</p>
-</details>
-</div>
-<aside class="proof">
-<span>Request / company scope</span>
-<span>Authorization / fail closed</span>
-<span>Query / shared predicate</span>
-<p>Annotation: a correct list with an incorrect count still breaks the contract.</p>
-</aside>
-</article>
-<article class="project">
-<div>
-<span class="num">02 / Data integrity</span>
-<h3>A duplicate is<br>a domain decision.</h3>
-<p>Illustrative example, not a published project: defining business identity before changing duplicate validation.</p>
-</div>
-<aside class="note">Start with the rule.<br>Then choose the constraint.<p>Java / SQL / API design</p>
-</aside>
-</article>
-</section>
-<section class="essay experience" id="experience">
-<div>
-<h2>Close to the service.<br>Accountable for the outcome.</h2>
-<p>Backend software engineering</p>
-<p>Detailed work history and project evidence will be added here when ready for publication.</p>
-</div>
-</section>
-<section class="contact" id="contact">
-<div>
-<h2>Find me on GitHub.</h2>
-</div>
-<div>
-<a href="https://github.com/ascaveth">Find ascaveth on GitHub</a>
-</div>
-</section>
-</main>
-<footer>
-<span>ascaveth</span>
-<span>Engineering fieldnotes</span>
-<a href="#top">Back to top</a>
-</footer>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav aria-label="Main navigation">
+    <a href="#top">ascaveth / engineering fieldnotes</a>
+    <div>
+      <a href="#about">About</a>
+      <a href="#projects">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+  <main id="main">
+    <header>
+      <aside>
+        <span>Angriawan Yevance Mailoa</span>
+        <p class="note">Backend Engineer<br>Jakarta, Indonesia</p>
+      </aside>
+      <div>
+        <h1>I build backend services.</h1>
+        <p class="intro">I use Java and Spring Boot for business systems and developer tools.</p>
+        <a class="button" href="#projects">Read selected work</a>
+      </div>
+    </header>
+    <section class="essay" id="about">
+      <div>
+        <h2>About</h2>
+        <p>I'm a backend engineer with 4+ years of experience. I've worked on dealer operations and internal business systems, as well as platforms for AI-assisted software development.</p>
+        <dl class="technical-focus">
+          <dt>Backend services</dt>
+          <dd>Java, Spring Boot, REST APIs, MCP</dd>
+          <dt>Identity &amp; access</dt>
+          <dd>Keycloak, multi-tenant access control, MapStruct</dd>
+          <dt>Data engineering</dt>
+          <dd>PostgreSQL, Oracle SQL, MySQL, ETL</dd>
+        </dl>
+        <details>
+          <summary>Education &amp; earlier projects</summary>
+          <p>Bachelor's degree in Information Systems, Tarumanagara University, 2018 to 2022. GPA: 3.64.</p>
+          <p>My thesis was a payroll dashboard built with PHP and MySQL. <a href="https://doi.org/10.24912/ijaste.v1.i2.403-410">Read the published paper</a>.</p>
+          <p>Other academic projects included a COVID-19 dashboard in Power BI and a Tetris game using JavaFX and Java Swing.</p>
+        </details>
+      </div>
+    </section>
+    <section id="projects">
+      <div class="essay">
+        <h2>Selected work</h2>
+      </div>
+      <article class="project">
+        <div>
+          <h3>Software Factory</h3>
+          <p class="project-context">EKSAD Technology / AI-assisted development platform</p>
+          <p>I built backend services to manage project access and agent conversations, and integrated GitLab through MCP.</p>
+          <details>
+            <summary>Read my contribution</summary>
+            <p>In the Agent Adapter, I implemented Hermes sessions and artifact context handling. I also built artifact storage with retries and retention, plus notifications and magic-link emails.</p>
+            <p>I defined service boundaries, data ownership, and how services handle failures. I recorded those decisions in ADRs and service documentation.</p>
+          </details>
+        </div>
+        <aside class="proof" aria-label="Software Factory service responsibilities">
+          <span>Portal / access and conversations</span>
+          <span>Agent Adapter / sessions and context</span>
+          <span>Notifications / magic-link emails</span>
+          <p>I documented what each service does and which data it owns.</p>
+        </aside>
+      </article>
+      <article class="project">
+        <div>
+          <h3>User Management Platform</h3>
+          <p class="project-context">EKSAD Technology / Identity &amp; access</p>
+          <p>I built role hierarchies and multi-tenant access control in a service integrated with Keycloak.</p>
+          <details>
+            <summary>Read my contribution</summary>
+            <p>I implemented authentication and tenant provisioning. Permission visibility depended on the requesting user's access level. I used MapStruct to map display names across services.</p>
+            <p>I wrote tests for permission guards and data retention.</p>
+          </details>
+          <details>
+            <summary>Placeholder: tenant isolation decision</summary>
+            <p>This is a reference scenario based on <a href="https://cheatsheetseries.owasp.org/cheatsheets/Multi_Tenant_Security_Cheat_Sheet.html">OWASP guidance on multi-tenant security</a>, not a record of my project decisions or completed tests. Replace it with an actual project example.</p>
+            <p>Scenario: a tenant administrator needs to manage their own tenant without accessing another tenant's records.</p>
+            <p>Proposed approach: verify the caller's membership and permissions for the selected tenant, then use that verified tenant context when accessing records.</p>
+            <p>Reason: a tenant ID supplied in a request selects a tenant but does not prove that the caller has access to it.</p>
+            <p>Checks to run: confirm that authorized requests succeed, then try another tenant's record ID, a modified tenant selector, and a user whose tenant membership has been revoked. These checks have not been run for this placeholder.</p>
+          </details>
+        </div>
+        <aside class="note">The requesting user's access level determines which permissions are visible.<p>Keycloak / MapStruct / Multi-tenancy</p></aside>
+      </article>
+      <article class="project">
+        <div>
+          <h3>Legacy database migration</h3>
+          <p class="project-context">Bollore Logistics Indonesia / Data migration</p>
+          <p>I merged two Microsoft Access databases into PostgreSQL using ETL. Batch Script and Visual Basic automated the migration.</p>
+        </div>
+        <aside class="note">Data-transfer time per cycle<p>3 hours before automation.<br>1 hour after automation.</p></aside>
+      </article>
+    </section>
+    <section class="essay experience" id="experience">
+      <div>
+        <h2>Experience</h2>
+        <article class="role">
+          <h3>Backend Engineer</h3>
+          <p>PT. Tiga Daya Digital (EKSAD Technology)</p>
+          <p class="role-period">September 2024 to present / Jakarta</p>
+          <p>I build backend services, implement access control, and document architecture decisions. I also developed document workflows for Nagamas One System and planned work breakdowns, timelines, and budgets for a small engineering team.</p>
+        </article>
+        <article class="role">
+          <h3>Junior Application Developer</h3>
+          <p>PT. Mayora Indah Tbk</p>
+          <p class="role-period">August 2022 to August 2024 / Jakarta</p>
+          <p>I optimized Oracle queries and views, and built a Java/Spring Boot interface for packaging materials used by 100+ internal users. I also maintained an HR system across three departments/locations.</p>
+        </article>
+        <article class="role">
+          <h3>Solutions Engineer Intern</h3>
+          <p>PT. Bollore Logistics Indonesia</p>
+          <p class="role-period">February 2021 to July 2021 / Tangerang</p>
+          <p>I automated the migration of legacy Access databases into PostgreSQL.</p>
+        </article>
+      </div>
+    </section>
+    <section class="essay" id="community">
+      <div>
+        <h2>Community &amp; interests</h2>
+        <article class="role">
+          <h3>osu! competition &amp; community</h3>
+          <p class="role-period">Indonesia Community Helper / September 2015 to December 2023</p>
+          <p>In the osu! community, I go by Ascaveth. I represented Indonesia at the <a href="https://osu.ppy.sh/wiki/en/Tournaments/OWC/2019">osu! World Cup in 2019</a>. Together with a community organizing team, I hosted the Ascaveth Invitational Tournament in <a href="https://osu.ppy.sh/wiki/en/Tournaments/AIT/2022">2022</a> and <a href="https://osu.ppy.sh/wiki/en/Tournaments/AIT/2023">2023</a>.</p>
+          <p>I also helped manage osu! Indonesia and OREJA, and organized tournaments online and in person.</p>
+        </article>
+        <article class="role">
+          <h3>Comic Frontier</h3>
+          <p class="role-period">Documentation Assistant / September 2022 to December 2022</p>
+          <p>I documented events through photos and videos for event reports.</p>
+        </article>
+        <p>Outside backend work, I'm interested in photography, cinematography, and Japanese culture.</p>
+      </div>
+    </section>
+    <section class="contact" id="contact">
+      <div>
+        <h2>Get in touch.</h2>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:angyevance@gmail.com">angyevance@gmail.com</a>
+        <a href="https://www.linkedin.com/in/angyevance">LinkedIn</a>
+        <a href="https://github.com/ascaveth">GitHub</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span>ascaveth</span>
+    <span>Engineering fieldnotes</span>
+    <a href="#top">Back to top</a>
+  </footer>
 </body>
 </html>

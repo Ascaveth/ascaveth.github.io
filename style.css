@@ -141,10 +141,6 @@ summary:hover {
   color:var(--accent);
 }
 
-.num {
-  color:var(--accent);
-}
-
 @media(max-width:700px) {
   nav {
     align-items:flex-start;
@@ -236,6 +232,7 @@ header h1 {
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:60px;
   border-top:1px solid var(--line);
 }
 
@@ -319,8 +316,38 @@ summary {
   color:var(--paper);
 }
 
-.experience p:first-of-type {
+.technical-focus {
+  margin:24px 0;
+}
+
+.technical-focus dt {
   color:var(--accent);
+}
+
+.technical-focus dd {
+  margin:0 0 16px;
+}
+
+.project-context,.role-period {
+  font-size:14px;
+  color:var(--muted);
+}
+
+.role {
+  padding:24px 0;
+  border-top:1px solid var(--line);
+}
+
+.role h3 {
+  margin:0 0 16px;
+}
+
+.role p {
+  margin:8px 0;
+}
+
+.contact-links a {
+  display:block;
 }
 
 @media(min-width:701px) and (max-width:960px) {
