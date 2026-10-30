@@ -1,15 +1,91 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-	<title>ascaveth.moe</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ascaveth — Backend Software Engineer. Notes on APIs, data, and the decisions behind dependable software.">
+<title>Engineering fieldnotes | ascaveth</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
-<body>
-    <div class="bg-image"></div>
-	<div class="floating">
-        <img src="assets/now_loading.png">
-    </div>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<nav aria-label="Main navigation">
+<a href="#top">ascaveth / engineering fieldnotes</a>
+<div>
+<a href="#about">About</a>
+<a href="#projects">Work</a>
+<a href="#contact">GitHub</a>
+</div>
+</nav>
+<main id="main">
+<header>
+<aside>
+<span>ascaveth</span>
+<p class="note">Backend engineering<br>Decisions, systems,<br>and the details between.</p>
+</aside>
+<div>
+<h1>The work behind the interface.</h1>
+<p class="intro">A backend engineer’s notes on APIs, data, and dependable software.</p>
+<a class="button" href="#projects">Read selected work</a>
+</div>
+</header>
+<section class="essay" id="about">
+<div>
+<h2>I like knowing why<br>a system behaves.</h2>
+<p>Backend Software Engineer. This notebook is a place for examining APIs, access boundaries, and data integrity through the decisions behind them.</p>
+</div>
+</section>
+<section id="projects">
+<div class="essay">
+<h2>Engineering notes</h2>
+</div>
+<article class="project">
+<div>
+<span class="num">01 / Access boundaries</span>
+<h3>Who gets to see<br>which records?</h3>
+<p>Illustrative example, not a published project: bringing list results and pagination under the same authorization rule.</p>
+<details>
+<summary>Read the decision</summary>
+<p>Apply one bound company predicate to both queries. Verify denied access, empty results, and page totals together.</p>
+</details>
+</div>
+<aside class="proof">
+<span>Request / company scope</span>
+<span>Authorization / fail closed</span>
+<span>Query / shared predicate</span>
+<p>Annotation: a correct list with an incorrect count still breaks the contract.</p>
+</aside>
+</article>
+<article class="project">
+<div>
+<span class="num">02 / Data integrity</span>
+<h3>A duplicate is<br>a domain decision.</h3>
+<p>Illustrative example, not a published project: defining business identity before changing duplicate validation.</p>
+</div>
+<aside class="note">Start with the rule.<br>Then choose the constraint.<p>Java / SQL / API design</p>
+</aside>
+</article>
+</section>
+<section class="essay experience" id="experience">
+<div>
+<h2>Close to the service.<br>Accountable for the outcome.</h2>
+<p>Backend software engineering</p>
+<p>Detailed work history and project evidence will be added here when ready for publication.</p>
+</div>
+</section>
+<section class="contact" id="contact">
+<div>
+<h2>Find me on GitHub.</h2>
+</div>
+<div>
+<a href="https://github.com/ascaveth">Find ascaveth on GitHub</a>
+</div>
+</section>
+</main>
+<footer>
+<span>ascaveth</span>
+<span>Engineering fieldnotes</span>
+<a href="#top">Back to top</a>
+</footer>
 </body>
 </html>
