@@ -1,35 +1,389 @@
-
-.floating { 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    margin-left: 30px;
-    margin-top: 5px;
-    padding-top: 17%;
+/* Hallmark · v2.0.0 · theme: custom · idea: Engineering fieldnotes · hero: custom · posture: restrained · source: DESIGN.md */
+/* critique: distinct compositions;  no invented achievements or metrics. */
+/* Hallmark · waive 65 · by request, approved in DESIGN.md · Warm paper and serif define the selected direction. */
+:root {
+  --paper:#f3eee2;
+  --ink:#292d28;
+  --accent:#975036;
+  --muted:#65665a;
+  --line:#c8c5b6;
+  --body:"Trebuchet MS",sans-serif;
+  --display:Palatino,"Palatino Linotype",serif;
 }
 
-.floating img {
-    width: 20%;
-    height: auto;
+* {
+  box-sizing:border-box;
 }
- 
-.bg-image {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background-image: url("assets/background.jpg");
-    background-size: cover;
-    filter: blur(9px);
-    transform: scale(1.1);
+
+html,body {
+  overflow-x:clip;
+}
+
+body {
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.6;
+}
+
+a {
+  color:inherit;
+  text-underline-offset:5px;
+}
+
+a:hover {
+  color:var(--accent);
+}
+
+:focus-visible {
+  outline:3px solid var(--accent);
+  outline-offset:5px;
+}
+
+h1,h2,h3 {
+  font-family:var(--display);
+  font-weight:400;
+  line-height:1.06;
+  overflow-wrap:break-word;
+  min-width:0;
+  text-wrap:balance;
+}
+
+h1 {
+  font-size:clamp(48px,7.4vw,104px);
+  letter-spacing:-.035em;
+  margin:24px 0;
+}
+
+h2 {
+  font-size:clamp(34px,4vw,56px);
+  margin:0 0 24px;
+}
+
+h3 {
+  font-size:28px;
+}
+
+p {
+  max-width:58ch;
+  text-wrap:pretty;
+}
+
+nav {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:28px 0;
+  border-bottom:1px solid var(--line);
+}
+
+nav div {
+  display:flex;
+  gap:24px;
+}
+
+main,nav,footer {
+  width:calc(100% - 40px);
+  max-width:1240px;
+  margin:auto;
+}
+
+section {
+  padding:72px 0;
+}
+
+#about {
+  padding-bottom:24px;
+}
+
+#about p {
+  margin-bottom:0;
+}
+
+#projects {
+  padding-top:32px;
+}
+
+.button {
+  display:inline-block;
+  background:var(--ink);
+  color:var(--paper);
+  padding:12px 24px;
+  text-decoration:none;
+}
+
+.button:hover {
+  background:var(--accent);
+  color:var(--paper);
+}
+
+footer {
+  padding:32px 0;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+}
+
+details {
+  border-top:1px solid var(--line);
+  padding:24px 0;
+}
+
+summary {
+  cursor:pointer;
+  font-size:22px;
+}
+
+summary:hover {
+  color:var(--accent);
+}
+
+@media(max-width:700px) {
+  nav {
+    align-items:flex-start;
   }
- 
-@keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 35px); }
-    100%   { transform: translate(0, -0px); }    
+  nav div {
+    flex-wrap:wrap;
+  }
+  section {
+    padding:44px 0;
+  }
+  footer {
+    gap:20px;
+    flex-wrap:wrap;
+  }
 }
 
+@media(prefers-reduced-motion:reduce) {
+  * {
+    scroll-behavior:auto;
+    animation:none;
+    transition:none;
+  }
+}
+
+header {
+  display:grid;
+  grid-template-columns:180px minmax(0,1fr);
+  gap:60px;
+  padding:64px 0 76px;
+  border-bottom:3px double var(--ink);
+}
+
+header aside {
+  padding-top:32px;
+}
+
+header h1 {
+  max-width:13ch;
+}
+
+.intro {
+  font-size:21px;
+}
+
+.note {
+  border-top:1px solid var(--accent);
+  padding-top:16px;
+  color:var(--accent);
+  font-size:15px;
+}
+
+.essay {
+  display:grid;
+  grid-template-columns:180px minmax(0,1fr);
+  gap:60px;
+}
+
+.project {
+  display:grid;
+  grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);
+  gap:60px;
+  border-top:1px solid var(--line);
+  padding:32px 0;
+}
+
+.project h3 {
+  font-size:40px;
+  margin:8px 0;
+}
+
+.proof {
+  background:var(--ink);
+  color:var(--paper);
+  padding:24px;
+  font-family:var(--body);
+}
+
+.proof span {
+  display:block;
+  border-bottom:1px solid var(--muted);
+  padding:12px 0;
+}
+
+.experience {
+  border-top:3px double var(--ink);
+}
+
+.contact {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:60px;
+  border-top:1px solid var(--line);
+}
+
+.contact h2 {
+  margin:0;
+}
+
+@media(max-width:700px) {
+  header,.essay,.project {
+    grid-template-columns:minmax(0,1fr);
+    gap:20px;
+  }
+  header {
+    padding:32px 0 48px;
+  }
+  header aside {
+    padding:0;
+  }
+  header h1 {
+    margin-top:0;
+  }
+  .contact {
+    display:block;
+  }
+}
+
+a:active,summary:active {
+  text-decoration-thickness:3px;
+}
+
+.essay>div,.essay>h2 {
+  grid-column:2;
+}
+
+@media(max-width:700px) {
+  .essay>div,.essay>h2 {
+    grid-column:1;
+  }
+}
+
+/* Native controls keep the reading experience functional without scripts. */
+a,summary {
+  touch-action:manipulation;
+}
+
+nav a,footer a {
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+}
+
+summary {
+  min-height:44px;
+  padding:4px 0;
+}
+
+.contact a {
+  display:inline-block;
+  min-height:44px;
+  padding:8px 0;
+}
+
+.proof {
+  align-self:start;
+}
+
+.skip-link {
+  position:absolute;
+  transform:translateY(-200%);
+  background:var(--ink);
+  color:var(--paper);
+  padding:12px 24px;
+  z-index:2;
+}
+
+.skip-link:focus {
+  transform:translateY(0);
+}
+
+.skip-link:hover {
+  color:var(--paper);
+}
+
+.technical-focus {
+  margin:24px 0;
+}
+
+.technical-focus dt {
+  color:var(--accent);
+}
+
+.technical-focus dd {
+  margin:0 0 16px;
+}
+
+.project-context,.role-period {
+  font-size:14px;
+  color:var(--muted);
+}
+
+.role {
+  padding:24px 0;
+  border-top:1px solid var(--line);
+}
+
+.role h3 {
+  margin:0 0 16px;
+}
+
+.role p {
+  margin:8px 0;
+}
+
+.contact-links a {
+  display:block;
+}
+
+@media(min-width:701px) and (max-width:960px) {
+  header,.essay {
+    grid-template-columns:140px minmax(0,1fr);
+    gap:32px;
+  }
+  .project {
+    gap:32px;
+  }
+}
+
+@media(max-width:700px) {
+  nav {
+    flex-direction:column;
+    gap:4px;
+    padding:20px 0;
+  }
+  nav div {
+    width:100%;
+    justify-content:flex-start;
+    gap:4px 12px;
+  }
+  header aside .note {
+    max-width:32ch;
+  }
+  h1 {
+    font-size:clamp(44px,13.8vw,54px);
+  }
+  .project h3 {
+    font-size:36px;
+  }
+  .intro {
+    font-size:20px;
+  }
+  .contact h2 {
+    max-width:15ch;
+  }
+}
