@@ -107,11 +107,6 @@ section {
   padding-top:32px;
 }
 
-small,.meta {
-  font-size:14px;
-  color:var(--muted);
-}
-
 .button {
   display:inline-block;
   background:var(--ink);
@@ -151,16 +146,11 @@ summary:hover {
 }
 
 @media(max-width:700px) {
-  main,nav,footer {
-    width:calc(100% - 40px);
-  }
   nav {
     align-items:flex-start;
   }
   nav div {
-    gap:12px;
     flex-wrap:wrap;
-    justify-content:flex-end;
   }
   section {
     padding:44px 0;
@@ -168,9 +158,6 @@ summary:hover {
   footer {
     gap:20px;
     flex-wrap:wrap;
-  }
-  h1 {
-    font-size:54px;
   }
 }
 
