@@ -3,14 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Angriawan Yevance Mailoa, Backend Engineer in Jakarta. Java and Spring Boot services, access control, SQL optimization, and data migration.">
-  <title>Angriawan Yevance Mailoa | Backend Engineer</title>
+  <meta name="description" content="アスカヴェス (Asukavu~esu/Ascaveth) // Welcome to ascaveth.moe">
+  <title>ascaveth.moe</title>
+  <meta property="og:title" content="ascaveth.moe">
+  <meta property="og:description" content="アスカヴェス (Asukavu~esu/Ascaveth) // Welcome to ascaveth.moe">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ascaveth.moe">
+  <meta name="twitter:description" content="アスカヴェス (Asukavu~esu/Ascaveth) // Welcome to ascaveth.moe">
+  <link rel="preconnect" href="https://ascaveth.s-ul.eu">
+  <link rel="preload" as="image" href="assets/now_loading.webp" fetchpriority="high">
   <link rel="stylesheet" href="style.css">
+  <script src="navigation.js" defer></script>
+  <script src="disclosure.js" defer></script>
+  <script src="carousel.js" defer></script>
+  <script src="lightbox.js" defer></script>
 </head>
 <body id="top">
+  <dialog class="intro-loader" aria-label="Loading portfolio">
+    <img src="assets/now_loading.webp" width="800" height="800" alt="" fetchpriority="high">
+  </dialog>
+  <script src="intro.js"></script>
   <a class="skip-link" href="#main">Skip to content</a>
   <nav aria-label="Main navigation">
-    <a href="#top">ascaveth / engineering fieldnotes</a>
+    <a href="#top">Angriawan Yevance Mailoa</a>
     <div>
       <a href="#about">About</a>
       <a href="#projects">Work</a>
@@ -21,19 +37,26 @@
   <main id="main">
     <header>
       <aside>
+        <a class="profile-photo-link" href="https://ascaveth.s-ul.eu/VTNGH1V6" aria-label="View profile photo: Angriawan Yevance Mailoa">
+          <img class="profile-photo" src="https://ascaveth.s-ul.eu/VTNGH1V6" width="640" height="640" alt="Angriawan Yevance Mailoa" decoding="async">
+        </a>
         <span>Angriawan Yevance Mailoa</span>
         <p class="note">Backend Engineer<br>Jakarta, Indonesia</p>
       </aside>
       <div>
-        <h1>I build backend services.</h1>
-        <p class="intro">I use Java and Spring Boot for business systems and developer tools.</p>
-        <a class="button" href="#projects">Read selected work</a>
+        <h1>Welcome to my portfolio.</h1>
+        <p class="intro">Explore my professional work, community projects, and interests beyond backend engineering.</p>
+        <div class="hero-actions">
+          <a class="work-link" href="#projects">Read selected work</a>
+          <a class="resume-link" href="assets/resume/Vance_Resume.pdf" download="Vance_Resume.pdf">Download CV <span>(PDF)</span></a>
+        </div>
       </div>
     </header>
     <section class="essay" id="about">
       <div>
         <h2>About</h2>
         <p>I'm a backend engineer with 4+ years of experience. I've worked on dealer operations and internal business systems, as well as platforms for AI-assisted software development.</p>
+        <p>Outside backend work, I'm interested in photography, cinematography, and Japanese culture.</p>
         <dl class="technical-focus">
           <dt>Backend services</dt>
           <dd>Java, Spring Boot, REST APIs, MCP</dd>
@@ -51,7 +74,7 @@
       </div>
     </section>
     <section id="projects">
-      <div class="essay">
+      <div>
         <h2>Selected work</h2>
       </div>
       <article class="project">
@@ -65,12 +88,7 @@
             <p>I defined service boundaries, data ownership, and how services handle failures. I recorded those decisions in ADRs and service documentation.</p>
           </details>
         </div>
-        <aside class="proof" aria-label="Software Factory service responsibilities">
-          <span>Portal / access and conversations</span>
-          <span>Agent Adapter / sessions and context</span>
-          <span>Notifications / magic-link emails</span>
-          <p>I documented what each service does and which data it owns.</p>
-        </aside>
+        <aside class="note">Service boundaries<p>Portal, Agent Adapter, and Notifications.</p></aside>
       </article>
       <article class="project">
         <div>
@@ -83,15 +101,13 @@
             <p>I wrote tests for permission guards and data retention.</p>
           </details>
           <details>
-            <summary>Placeholder: tenant isolation decision</summary>
-            <p>This is a reference scenario based on <a href="https://cheatsheetseries.owasp.org/cheatsheets/Multi_Tenant_Security_Cheat_Sheet.html">OWASP guidance on multi-tenant security</a>, not a record of my project decisions or completed tests. Replace it with an actual project example.</p>
-            <p>Scenario: a tenant administrator needs to manage their own tenant without accessing another tenant's records.</p>
-            <p>Proposed approach: verify the caller's membership and permissions for the selected tenant, then use that verified tenant context when accessing records.</p>
-            <p>Reason: a tenant ID supplied in a request selects a tenant but does not prove that the caller has access to it.</p>
-            <p>Checks to run: confirm that authorized requests succeed, then try another tenant's record ID, a modified tenant selector, and a user whose tenant membership has been revoked. These checks have not been run for this placeholder.</p>
+            <summary>Tenant isolation scenario</summary>
+            <p>A tenant administrator needs to manage their own tenant without accessing another tenant’s records.</p>
+            <p>The approach is to verify membership and permissions for the selected tenant, then use that verified tenant context when accessing records. A tenant ID in a request selects a tenant; it does not establish access.</p>
+            <p>Verification should cover authorized requests, another tenant’s record ID, a modified tenant selector, and revoked tenant membership.</p>
           </details>
         </div>
-        <aside class="note">The requesting user's access level determines which permissions are visible.<p>Keycloak / MapStruct / Multi-tenancy</p></aside>
+        <aside class="note">Identity &amp; access<p>Keycloak, MapStruct, multi-tenancy.</p></aside>
       </article>
       <article class="project">
         <div>
@@ -116,6 +132,10 @@
           <p>PT. Mayora Indah Tbk</p>
           <p class="role-period">August 2022 to August 2024 / Jakarta</p>
           <p>I optimized Oracle queries and views, and built a Java/Spring Boot interface for packaging materials used by 100+ internal users. I also maintained an HR system across three departments/locations.</p>
+          <div class="photo-gallery">
+            <figure><a href="https://ascaveth.s-ul.eu/0bPSDKbH" aria-label="View full-size photo: IT In-House Development Team at Mayora"><img src="https://ascaveth.s-ul.eu/0bPSDKbH" srcset="https://ascaveth.s-ul.eu/VuJPw4NQ 640w, https://ascaveth.s-ul.eu/0bPSDKbH 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc((100vw - 236px) / 2), (max-width:1280px) calc((100vw - 304px) / 2), 488px" width="1280" height="960" alt="IT In-House Development Team at Mayora" loading="lazy" decoding="async"></a><figcaption>Last day with the IT In-House Development Team, 14 August 2024.</figcaption></figure>
+            <figure><a href="https://ascaveth.s-ul.eu/jx0SEN0O" aria-label="View full-size photo: Mayora IT In-house Application Development Team"><img src="https://ascaveth.s-ul.eu/jx0SEN0O" srcset="https://ascaveth.s-ul.eu/UuJBv6YC 640w, https://ascaveth.s-ul.eu/jx0SEN0O 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc((100vw - 236px) / 2), (max-width:1280px) calc((100vw - 304px) / 2), 488px" width="1280" height="960" alt="Mayora IT In-house Application Development Team" loading="lazy" decoding="async"></a><figcaption>IT In-house Application Development Team, 23 January 2023.</figcaption></figure>
+          </div>
         </article>
         <article class="role">
           <h3>Solutions Engineer Intern</h3>
@@ -133,13 +153,25 @@
           <p class="role-period">Indonesia Community Helper / September 2015 to December 2023</p>
           <p>In the osu! community, I go by Ascaveth. I represented Indonesia at the <a href="https://osu.ppy.sh/wiki/en/Tournaments/OWC/2019">osu! World Cup in 2019</a>. Together with a community organizing team, I hosted the Ascaveth Invitational Tournament in <a href="https://osu.ppy.sh/wiki/en/Tournaments/AIT/2022">2022</a> and <a href="https://osu.ppy.sh/wiki/en/Tournaments/AIT/2023">2023</a>.</p>
           <p>I also helped manage osu! Indonesia and OREJA, and organized tournaments online and in person.</p>
+          <div class="photo-gallery" data-carousel>
+            <figure><a href="https://ascaveth.s-ul.eu/EoLGI2WE" aria-label="View full-size photo: Participants at the Ascaveth Invitational Tournament 2023 closing ceremony"><img src="https://ascaveth.s-ul.eu/EoLGI2WE" srcset="https://ascaveth.s-ul.eu/ZHiH2vd8 640w, https://ascaveth.s-ul.eu/EoLGI2WE 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc(100vw - 212px), (max-width:1040px) calc(100vw - 280px), 760px" width="1280" height="720" alt="Participants at the Ascaveth Invitational Tournament 2023 closing ceremony" loading="lazy" decoding="async"></a><figcaption>Ascaveth Invitational Tournament 2023 closing ceremony, 9 December 2023.</figcaption></figure>
+            <figure><a href="https://ascaveth.s-ul.eu/S1gYMRjq" aria-label="View full-size photo: Participants at the Ascaveth Invitational Tournament 2022 closing ceremony"><img src="https://ascaveth.s-ul.eu/S1gYMRjq" srcset="https://ascaveth.s-ul.eu/LjyHO0zF 640w, https://ascaveth.s-ul.eu/S1gYMRjq 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc(100vw - 212px), (max-width:1040px) calc(100vw - 280px), 760px" width="1280" height="719" alt="Participants at the Ascaveth Invitational Tournament 2022 closing ceremony" loading="lazy" decoding="async"></a><figcaption>Ascaveth Invitational Tournament 2022 closing ceremony, 6 September 2022.</figcaption></figure>
+            <figure><a href="https://ascaveth.s-ul.eu/NMZskAvR" aria-label="View full-size photo: osu! Indonesia community meetup at Comic Frontier 14"><img src="https://ascaveth.s-ul.eu/NMZskAvR" srcset="https://ascaveth.s-ul.eu/u17K9KzN 640w, https://ascaveth.s-ul.eu/NMZskAvR 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc(100vw - 212px), (max-width:1040px) calc(100vw - 280px), 760px" width="1280" height="720" alt="osu! Indonesia community meetup at Comic Frontier 14" loading="lazy" decoding="async"></a><figcaption>osu! Indonesia meetup at Comic Frontier 14, Balai Kartini, February 2020.</figcaption></figure>
+          </div>
         </article>
         <article class="role">
           <h3>Comic Frontier</h3>
-          <p class="role-period">Documentation Assistant / September 2022 to December 2022</p>
+          <p class="role-period">Documentation Assistant / Comic Frontier 15 &amp; 16, 2022–2023</p>
           <p>I documented events through photos and videos for event reports.</p>
+          <div class="photo-gallery" data-carousel>
+            <figure><a href="https://ascaveth.s-ul.eu/OIb9yArS" aria-label="View full-size photo: Comic Frontier 15 documentation team group photo"><img src="https://ascaveth.s-ul.eu/OIb9yArS" srcset="https://ascaveth.s-ul.eu/cIen233s 640w, https://ascaveth.s-ul.eu/OIb9yArS 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc(100vw - 212px), (max-width:1040px) calc(100vw - 280px), 760px" width="1280" height="853" alt="Comic Frontier 15 documentation team group photo" loading="lazy" decoding="async"></a><figcaption>Comic Frontier 15 documentation team, ICE BSD, September 2022.</figcaption></figure>
+            <figure><a href="https://ascaveth.s-ul.eu/0Xw3IeTm" aria-label="View full-size photo: Comic Frontier 16 documentation team group photo"><img src="https://ascaveth.s-ul.eu/0Xw3IeTm" srcset="https://ascaveth.s-ul.eu/0keD0DbM 640w, https://ascaveth.s-ul.eu/0Xw3IeTm 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc(100vw - 212px), (max-width:1040px) calc(100vw - 280px), 760px" width="1280" height="720" alt="Comic Frontier 16 documentation team group photo" loading="lazy" decoding="async"></a><figcaption>Comic Frontier 16 documentation team, ICE BSD, May 2023.</figcaption></figure>
+            <figure><a href="https://ascaveth.s-ul.eu/3uWWPvT9" aria-label="View full-size photo: ICE BSD hall during teardown after Comic Frontier 15"><img src="https://ascaveth.s-ul.eu/3uWWPvT9" srcset="https://ascaveth.s-ul.eu/Dt4Tzpfc 640w, https://ascaveth.s-ul.eu/3uWWPvT9 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc(100vw - 212px), (max-width:1040px) calc(100vw - 280px), 760px" width="1280" height="720" alt="ICE BSD hall during teardown after Comic Frontier 15" loading="lazy" decoding="async"></a><figcaption>The hall after Comic Frontier 15 closed.</figcaption></figure>
+            <figure><a href="https://ascaveth.s-ul.eu/06pqCamH" aria-label="View full-size photo: Self-published artwork displayed at a Comic Frontier 15 booth"><img src="https://ascaveth.s-ul.eu/06pqCamH" srcset="https://ascaveth.s-ul.eu/og6KUDvW 640w, https://ascaveth.s-ul.eu/06pqCamH 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc(100vw - 212px), (max-width:1040px) calc(100vw - 280px), 760px" width="1280" height="720" alt="Self-published artwork displayed at a Comic Frontier 15 booth" loading="lazy" decoding="async"></a><figcaption>Independent creators and self-published works at Comic Frontier 15.</figcaption></figure>
+            <figure><a href="https://ascaveth.s-ul.eu/qwETI1qT" aria-label="View full-size photo: Visitors queueing at the Comic Frontier 15 entrance"><img src="https://ascaveth.s-ul.eu/qwETI1qT" srcset="https://ascaveth.s-ul.eu/so0AK4F0 640w, https://ascaveth.s-ul.eu/qwETI1qT 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc(100vw - 212px), (max-width:1040px) calc(100vw - 280px), 760px" width="1280" height="720" alt="Visitors queueing at the Comic Frontier 15 entrance" loading="lazy" decoding="async"></a><figcaption>The entrance queue on the second day of Comic Frontier 15.</figcaption></figure>
+            <figure><a href="https://ascaveth.s-ul.eu/gnNajM3L" aria-label="View full-size photo: Corporate exhibitor booth at Comic Frontier 15"><img src="https://ascaveth.s-ul.eu/gnNajM3L" srcset="https://ascaveth.s-ul.eu/Rll2gbfK 640w, https://ascaveth.s-ul.eu/gnNajM3L 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc(100vw - 212px), (max-width:1040px) calc(100vw - 280px), 760px" width="1280" height="720" alt="Corporate exhibitor booth at Comic Frontier 15" loading="lazy" decoding="async"></a><figcaption>A corporate exhibitor at Comic Frontier 15.</figcaption></figure>
+          </div>
         </article>
-        <p>Outside backend work, I'm interested in photography, cinematography, and Japanese culture.</p>
       </div>
     </section>
     <section class="contact" id="contact">
@@ -150,12 +182,12 @@
         <a href="mailto:angyevance@gmail.com">angyevance@gmail.com</a>
         <a href="https://www.linkedin.com/in/angyevance">LinkedIn</a>
         <a href="https://github.com/ascaveth">GitHub</a>
+        <a class="resume-link" href="assets/resume/Vance_Resume.pdf" download="Vance_Resume.pdf">Download CV <span>(PDF)</span></a>
       </div>
     </section>
   </main>
   <footer>
-    <span>ascaveth</span>
-    <span>Engineering fieldnotes</span>
+    <span>Angriawan Yevance Mailoa</span>
     <a href="#top">Back to top</a>
   </footer>
 </body>
