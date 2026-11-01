@@ -13,6 +13,9 @@
   <meta name="twitter:description" content="アスカヴェス (Asukavu~esu/Ascaveth) // Welcome to ascaveth.moe">
   <link rel="preconnect" href="https://ascaveth.s-ul.eu">
   <link rel="preload" as="image" href="assets/now_loading.webp" fetchpriority="high">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png?v=1">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/favicon-192.png?v=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
   <script src="navigation.js" defer></script>
   <script src="disclosure.js" defer></script>
@@ -45,7 +48,7 @@
       </aside>
       <div>
         <h1>Welcome to my portfolio.</h1>
-        <p class="intro">Explore my professional work, community projects, and interests beyond backend engineering.</p>
+        <p class="intro">Here you'll find my backend work, community projects, and interests outside engineering.</p>
         <div class="hero-actions">
           <a class="work-link" href="#projects">Read selected work</a>
           <a class="resume-link" href="assets/resume/Vance_Resume.pdf" download="Vance_Resume.pdf">Download CV <span>(PDF)</span></a>
@@ -55,13 +58,13 @@
     <section class="essay" id="about">
       <div>
         <h2>About</h2>
-        <p>I'm a backend engineer with 4+ years of experience. I've worked on dealer operations and internal business systems, as well as platforms for AI-assisted software development.</p>
+        <p>I'm a backend engineer with 4+ years of experience. My work covers dealer operations, internal business systems, and platforms for AI-assisted software development.</p>
         <p>Outside backend work, I'm interested in photography, cinematography, and Japanese culture.</p>
         <dl class="technical-focus">
           <dt>Backend services</dt>
-          <dd>Java, Spring Boot, REST APIs, MCP</dd>
+          <dd>Java, Spring Boot, REST APIs, MCP, MapStruct</dd>
           <dt>Identity &amp; access</dt>
-          <dd>Keycloak, multi-tenant access control, MapStruct</dd>
+          <dd>Keycloak, multi-tenant access control</dd>
           <dt>Data engineering</dt>
           <dd>PostgreSQL, Oracle SQL, MySQL, ETL</dd>
         </dl>
@@ -81,33 +84,33 @@
         <div>
           <h3>Software Factory</h3>
           <p class="project-context">EKSAD Technology / AI-assisted development platform</p>
-          <p>I built backend services to manage project access and agent conversations, and integrated GitLab through MCP.</p>
+          <p>I built backend services for project access and agent conversations, and integrated GitLab through MCP.</p>
+          <p>I defined the service boundaries, data ownership, and failure handling, then documented those decisions in ADRs and service documentation.</p>
           <details>
-            <summary>Read my contribution</summary>
-            <p>In the Agent Adapter, I implemented Hermes sessions and artifact context handling. I also built artifact storage with retries and retention, plus notifications and magic-link emails.</p>
-            <p>I defined service boundaries, data ownership, and how services handle failures. I recorded those decisions in ADRs and service documentation.</p>
+            <summary>Sessions, artifacts &amp; delivery</summary>
+            <p>In the Agent Adapter, I implemented Hermes sessions and handled artifact context. I also built artifact storage with retries and retention, plus notifications and magic-link emails.</p>
           </details>
         </div>
-        <aside class="note">Service boundaries<p>Portal, Agent Adapter, and Notifications.</p></aside>
+        <aside class="note">Service boundaries<p>Portal manages access and conversations. Agent Adapter handles sessions and context. Notifications delivers magic-link emails.</p></aside>
       </article>
       <article class="project">
         <div>
           <h3>User Management Platform</h3>
           <p class="project-context">EKSAD Technology / Identity &amp; access</p>
           <p>I built role hierarchies and multi-tenant access control in a service integrated with Keycloak.</p>
+          <p>The requesting user's access level determined which permissions they could see. I wrote tests for permission guards and data retention.</p>
           <details>
-            <summary>Read my contribution</summary>
-            <p>I implemented authentication and tenant provisioning. Permission visibility depended on the requesting user's access level. I used MapStruct to map display names across services.</p>
-            <p>I wrote tests for permission guards and data retention.</p>
+            <summary>Authentication &amp; tenant provisioning</summary>
+            <p>I implemented authentication and tenant provisioning. I used MapStruct to map display names across services.</p>
           </details>
           <details>
             <summary>Tenant isolation scenario</summary>
             <p>A tenant administrator needs to manage their own tenant without accessing another tenant’s records.</p>
-            <p>The approach is to verify membership and permissions for the selected tenant, then use that verified tenant context when accessing records. A tenant ID in a request selects a tenant; it does not establish access.</p>
+            <p>Verify membership and permissions for the selected tenant, then use that verified tenant context to access records. A tenant ID in a request selects a tenant; it does not establish access.</p>
             <p>Verification should cover authorized requests, another tenant’s record ID, a modified tenant selector, and revoked tenant membership.</p>
           </details>
         </div>
-        <aside class="note">Identity &amp; access<p>Keycloak, MapStruct, multi-tenancy.</p></aside>
+        <aside class="note">Access boundary<p>A tenant ID selects a tenant; membership and permissions establish access.</p></aside>
       </article>
       <article class="project">
         <div>
@@ -162,7 +165,7 @@
         <article class="role">
           <h3>Comic Frontier</h3>
           <p class="role-period">Documentation Assistant / Comic Frontier 15 &amp; 16, 2022–2023</p>
-          <p>I documented events through photos and videos for event reports.</p>
+          <p>I photographed and filmed the events for event reports.</p>
           <div class="photo-gallery" data-carousel>
             <figure><a href="https://ascaveth.s-ul.eu/OIb9yArS" aria-label="View full-size photo: Comic Frontier 15 documentation team group photo"><img src="https://ascaveth.s-ul.eu/OIb9yArS" srcset="https://ascaveth.s-ul.eu/cIen233s 640w, https://ascaveth.s-ul.eu/OIb9yArS 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc(100vw - 212px), (max-width:1040px) calc(100vw - 280px), 760px" width="1280" height="853" alt="Comic Frontier 15 documentation team group photo" loading="lazy" decoding="async"></a><figcaption>Comic Frontier 15 documentation team, ICE BSD, September 2022.</figcaption></figure>
             <figure><a href="https://ascaveth.s-ul.eu/0Xw3IeTm" aria-label="View full-size photo: Comic Frontier 16 documentation team group photo"><img src="https://ascaveth.s-ul.eu/0Xw3IeTm" srcset="https://ascaveth.s-ul.eu/0keD0DbM 640w, https://ascaveth.s-ul.eu/0Xw3IeTm 1280w" sizes="(max-width:700px) calc(100vw - 40px), (max-width:960px) calc(100vw - 212px), (max-width:1040px) calc(100vw - 280px), 760px" width="1280" height="720" alt="Comic Frontier 16 documentation team group photo" loading="lazy" decoding="async"></a><figcaption>Comic Frontier 16 documentation team, ICE BSD, May 2023.</figcaption></figure>
@@ -176,7 +179,7 @@
     </section>
     <section class="contact" id="contact">
       <div>
-        <h2>Get in touch.</h2>
+        <h2>Have something in mind?</h2>
       </div>
       <div class="contact-links">
         <a href="mailto:angyevance@gmail.com">angyevance@gmail.com</a>
