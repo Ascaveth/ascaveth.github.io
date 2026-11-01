@@ -536,8 +536,14 @@ details[open]>summary::before {
   display:none;
 }
 
+.carousel figure > a {
+  aspect-ratio:16 / 9;
+}
+
 .carousel img {
-  height:auto;
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
 .carousel-controls {
@@ -766,4 +772,47 @@ html.intro-ready :is(nav,main,footer) {
 
 .intro-loader img.is-ready {
   opacity:1;
+}
+
+.photo-lightbox [hidden] {
+  display:none;
+}
+
+.photo-close {
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  margin:0 0 4px auto;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  font:inherit;
+  cursor:pointer;
+}
+
+.photo-close:hover {
+  color:var(--accent);
+}
+
+.carousel-feedback[hidden] {
+  display:none;
+}
+
+.carousel-feedback {
+  margin-top:8px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.carousel-feedback p {
+  margin:0;
+}
+
+.carousel-feedback a {
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
 }

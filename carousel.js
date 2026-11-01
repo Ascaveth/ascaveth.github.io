@@ -29,10 +29,40 @@ for (const gallery of document.querySelectorAll('[data-carousel]')) {
     return marker;
   });
   controls.append(previous, progress, next, status);
-  gallery.append(controls);
+  const feedback = document.createElement('div');
+  feedback.className = 'carousel-feedback';
+  const message = document.createElement('p');
+  message.setAttribute('role', 'status');
+  const recovery = document.createElement('a');
+  recovery.textContent = 'Open original image';
+  feedback.append(message, recovery);
+  gallery.append(feedback, controls);
 
   let current = 0;
   let animation;
+  let nearViewport = false;
+  function updateFeedback() {
+    const image = slides[current].querySelector('img');
+    const loaded = image.complete && image.naturalWidth > 0;
+    const failed = image.complete && !image.naturalWidth;
+    image.style.visibility = loaded ? '' : 'hidden';
+    feedback.hidden = loaded;
+    message.textContent = failed ? 'The photo could not be loaded.' : 'Loading photo…';
+    recovery.hidden = !failed;
+    recovery.href = slides[current].querySelector('a').href;
+  }
+  slides.forEach((slide, index) => {
+    const image = slide.querySelector('img');
+    for (const event of ['load', 'error']) {
+      image.addEventListener(event, () => {
+        if (index === current) updateFeedback();
+      });
+    }
+  });
+  function prefetch() {
+    slides[current].querySelector('img').loading = 'eager';
+    slides[(current + 1) % slides.length].querySelector('img').loading = 'eager';
+  }
   function show(index, animate = true) {
     if (animation) animation.cancel();
     current = (index + slides.length) % slides.length;
@@ -45,10 +75,9 @@ for (const gallery of document.querySelectorAll('[data-carousel]')) {
     status.textContent = `${current + 1} of ${slides.length}`;
     markers.forEach((marker, i) => marker.classList.toggle('is-active', i === current));
     const image = slides[current].querySelector('img');
-    image.loading = 'eager';
-    const nextImage = slides[(current + 1) % slides.length].querySelector('img');
-    nextImage.loading = 'eager';
-    if (animate && typeof image.animate === 'function') {
+    if (nearViewport || animate) prefetch();
+    updateFeedback();
+    if (animate && image.complete && image.naturalWidth && typeof image.animate === 'function') {
       animation = image.animate([{ opacity: 0.3 }, { opacity: 1 }], {
         duration: 220, easing: 'ease-out'
       });
@@ -63,4 +92,13 @@ for (const gallery of document.querySelectorAll('[data-carousel]')) {
     }
   });
   show(0, false);
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      nearViewport = true;
+      prefetch();
+      observer.disconnect();
+    }, { rootMargin: '300px' });
+    observer.observe(gallery);
+  }
 }
