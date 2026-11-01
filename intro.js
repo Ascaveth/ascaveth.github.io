@@ -39,5 +39,23 @@
     image.addEventListener('load', () => image.classList.add('is-ready'), { once: true });
     image.addEventListener('error', dismiss, { once: true });
   }
-  setTimeout(dismiss, 2500);
+  const minimumDisplay = new Promise(resolve => setTimeout(resolve, 2500));
+  const timeout = setTimeout(dismiss, 10000);
+  document.addEventListener('DOMContentLoaded', () => {
+    const images = [...document.querySelectorAll('img')].filter(image =>
+      image.loading !== 'lazy' && new URL(image.src).origin !== location.origin
+    );
+    const imagesReady = Promise.all(images.map(image => new Promise(resolve => {
+      if (image.complete) {
+        resolve();
+        return;
+      }
+      image.addEventListener('load', resolve, { once: true });
+      image.addEventListener('error', resolve, { once: true });
+    })));
+    Promise.all([minimumDisplay, imagesReady]).then(() => {
+      clearTimeout(timeout);
+      dismiss();
+    });
+  }, { once: true });
 })();
