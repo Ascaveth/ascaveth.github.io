@@ -45,6 +45,7 @@ for (const gallery of document.querySelectorAll('[data-carousel]')) {
     const image = slides[current].querySelector('img');
     const loaded = image.complete && image.naturalWidth > 0;
     const failed = image.complete && !image.naturalWidth;
+    image.closest('a').classList.toggle('is-loading', !loaded && !failed);
     image.style.visibility = loaded ? '' : 'hidden';
     feedback.hidden = loaded;
     message.textContent = failed ? 'The photo could not be loaded.' : 'Loading photo…';
@@ -55,7 +56,14 @@ for (const gallery of document.querySelectorAll('[data-carousel]')) {
     const image = slide.querySelector('img');
     for (const event of ['load', 'error']) {
       image.addEventListener(event, () => {
-        if (index === current) updateFeedback();
+        if (index === current) {
+          updateFeedback();
+          if (event === 'load' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && typeof image.animate === 'function') {
+            animation = image.animate([{ opacity: 0 }, { opacity: 1 }], {
+              duration: 450, easing: 'ease-out'
+            });
+          }
+        }
       });
     }
   });
@@ -77,7 +85,7 @@ for (const gallery of document.querySelectorAll('[data-carousel]')) {
     const image = slides[current].querySelector('img');
     if (nearViewport || animate) prefetch();
     updateFeedback();
-    if (animate && image.complete && image.naturalWidth && typeof image.animate === 'function') {
+    if (animate && image.complete && image.naturalWidth && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && typeof image.animate === 'function') {
       animation = image.animate([{ opacity: 0.3 }, { opacity: 1 }], {
         duration: 220, easing: 'ease-out'
       });
