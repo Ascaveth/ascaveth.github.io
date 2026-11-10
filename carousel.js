@@ -13,7 +13,7 @@ for (const gallery of document.querySelectorAll('[data-carousel]')) {
   previous.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>';
   previous.setAttribute('aria-label', `Previous photo: ${name}`);
   const status = document.createElement('span');
-  status.className = 'visually-hidden';
+  status.className = 'carousel-status';
   status.setAttribute('aria-live', 'polite');
   status.setAttribute('aria-atomic', 'true');
   const next = document.createElement('button');
@@ -28,7 +28,10 @@ for (const gallery of document.querySelectorAll('[data-carousel]')) {
     progress.append(marker);
     return marker;
   });
-  controls.append(previous, progress, next, status);
+  const position = document.createElement('div');
+  position.className = 'carousel-position';
+  position.append(progress, status);
+  controls.append(previous, position, next);
   const feedback = document.createElement('div');
   feedback.className = 'carousel-feedback';
   const message = document.createElement('p');
