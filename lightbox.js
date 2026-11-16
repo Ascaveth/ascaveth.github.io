@@ -45,7 +45,7 @@ if (typeof photoDialog.showModal === 'function') {
       document.documentElement.classList.remove('photo-viewer-open');
       closing = false;
       trigger.focus({ preventScroll: true });
-    }, 220);
+    }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 220);
   }
 
   for (const link of document.querySelectorAll('.photo-gallery a, .profile-photo-link')) {

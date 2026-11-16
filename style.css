@@ -399,7 +399,7 @@ summary {
   }
 }
 
-/* Motion remains enabled for the requested preview, including reduced-motion preferences. */
+/* Default motion is preserved unless the user requests reduced motion. */
 html {
   scroll-padding-top:var(--navigation-offset);
   scroll-behavior:smooth;
@@ -867,4 +867,19 @@ html.intro-ready :is(nav,main,footer) {
   display:inline-flex;
   align-items:center;
   min-height:44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior:auto;
+  }
+
+  *, *::before, *::after {
+    animation:none !important;
+    transition:none !important;
+  }
+
+  .button:active {
+    transform:none;
+  }
 }
