@@ -14,6 +14,13 @@ if (typeof Element.prototype.animate === 'function') {
       const from = details.open ? content.getBoundingClientRect().height : 0;
       const opacity = details.open ? getComputedStyle(content).opacity : '0';
       if (animation) animation.cancel();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        animation = null;
+        details.open = expanded;
+        content.style.removeProperty('overflow');
+        summary.removeAttribute('aria-expanded');
+        return;
+      }
       details.open = true;
       content.style.overflow = 'clip';
       animation = content.animate([

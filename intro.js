@@ -26,7 +26,7 @@
     setTimeout(() => {
       loader.close();
       loader.remove();
-    }, 250);
+    }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 250);
   }
   loader.addEventListener('cancel', event => {
     event.preventDefault();
