@@ -1,6 +1,7 @@
 const photoDialog = document.createElement('dialog');
 if (typeof photoDialog.showModal === 'function') {
   photoDialog.className = 'photo-lightbox';
+  photoDialog.setAttribute('closedby', 'any');
   photoDialog.setAttribute('aria-label', 'Photo viewer. Press Escape or click outside the photo to close.');
   photoDialog.tabIndex = -1;
   const image = document.createElement('img');
@@ -67,8 +68,12 @@ if (typeof photoDialog.showModal === 'function') {
       close.focus({ preventScroll: true });
     });
   }
-  photoDialog.addEventListener('click', event => {
-    if (event.target === photoDialog) closePhoto();
+  if (!('closedBy' in photoDialog)) photoDialog.addEventListener('click', event => {
+    if (event.target !== photoDialog) return;
+    const rect = photoDialog.getBoundingClientRect();
+    const isInsideDialog = rect.left <= event.clientX && event.clientX <= rect.right
+      && rect.top <= event.clientY && event.clientY <= rect.bottom;
+    if (!isInsideDialog) closePhoto();
   });
   photoDialog.addEventListener('cancel', event => {
     event.preventDefault();
